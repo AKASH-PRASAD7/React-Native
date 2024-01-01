@@ -1,19 +1,21 @@
 import react from 'react';
-import {SafeAreaView, Text, View, Image} from 'react-native';
+import {SafeAreaView, ScrollView} from 'react-native';
+import FlatCard from './components/FlatCard';
+import ElevatedCard from './components/ElevatedCard';
+import TrendingCard from './components/TrendingCard';
+import Blogcard from './components/Blogcard';
+import Contacts from './components/Contacts';
 
 const App = () => {
   return (
     <SafeAreaView>
-      <View>
-        <Text>Hello Mobile World !</Text>
-        <Text>Hello Mobile World !</Text>
-        <Text>Hello Mobile World !</Text>
-        <Text>Hello Mobile World !</Text>
-        <Image
-          source={{uri: 'https://reactnative.dev/docs/assets/p_cat2.png'}}
-          style={{width: 200, height: 200}}
-        />
-      </View>
+      <ScrollView>
+        <FlatCard />
+        <ElevatedCard />
+        <TrendingCard />
+        <Blogcard />
+        <Contacts />
+      </ScrollView>
     </SafeAreaView>
   );
 };
