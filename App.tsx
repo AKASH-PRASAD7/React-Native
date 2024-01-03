@@ -5,16 +5,18 @@ import ElevatedCard from './components/ElevatedCard';
 import TrendingCard from './components/TrendingCard';
 import Blogcard from './components/Blogcard';
 import Contacts from './components/Contacts';
+import PasswordGen from './components/PasswordGen';
 
 const App = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <FlatCard />
+        <PasswordGen />
+        {/* <FlatCard />
         <ElevatedCard />
         <TrendingCard />
         <Blogcard />
-        <Contacts />
+        <Contacts /> */}
       </ScrollView>
     </SafeAreaView>
   );

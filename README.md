@@ -1,1 +1,1 @@
-## Simple Project
+## Random Password Generator
