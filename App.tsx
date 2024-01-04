@@ -6,12 +6,14 @@ import TrendingCard from './components/TrendingCard';
 import Blogcard from './components/Blogcard';
 import Contacts from './components/Contacts';
 import PasswordGen from './components/PasswordGen';
+import Bgchanger from './components/Bgchanger';
 
 const App = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <PasswordGen />
+        <Bgchanger />
+        {/* <PasswordGen /> */}
         {/* <FlatCard />
         <ElevatedCard />
         <TrendingCard />

@@ -1,1 +1,1 @@
-## Random Password Generator
+## Bg Color Changer App
