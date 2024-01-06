@@ -8,10 +8,12 @@ import Contacts from './components/Contacts';
 import PasswordGen from './components/PasswordGen';
 import Bgchanger from './components/Bgchanger';
 import RollDice from './components/RollDice';
+import CurrencyConverter from './components/CurrencyConverter';
 
 const App = () => {
   return (
-    <RollDice />
+    <CurrencyConverter />
+    // <RollDice />
     // <SafeAreaView>
     //   <ScrollView>
     //     <Bgchanger />
