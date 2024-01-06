@@ -7,20 +7,22 @@ import Blogcard from './components/Blogcard';
 import Contacts from './components/Contacts';
 import PasswordGen from './components/PasswordGen';
 import Bgchanger from './components/Bgchanger';
+import RollDice from './components/RollDice';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Bgchanger />
-        {/* <PasswordGen /> */}
-        {/* <FlatCard />
-        <ElevatedCard />
-        <TrendingCard />
-        <Blogcard />
-        <Contacts /> */}
-      </ScrollView>
-    </SafeAreaView>
+    <RollDice />
+    // <SafeAreaView>
+    //   <ScrollView>
+    //     <Bgchanger />
+    //     {/* <PasswordGen /> */}
+    //     {/* <FlatCard />
+    //     <ElevatedCard />
+    //     <TrendingCard />
+    //     <Blogcard />
+    //     <Contacts /> */}
+    //   </ScrollView>
+    // </SafeAreaView>
   );
 };
 
