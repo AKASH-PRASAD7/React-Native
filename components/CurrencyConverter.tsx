@@ -1,6 +1,14 @@
-import {StyleSheet, Text, View, TextInput, FlatList} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  FlatList,
+  Pressable,
+} from 'react-native';
 import React, {useState} from 'react';
 import {currencyByRupee} from './Constants.ts';
+import Snackbar from 'react-native-snackbar';
 
 const CountryCard = (props: Currency): JSX.Element => {
   return (
@@ -13,7 +21,30 @@ const CountryCard = (props: Currency): JSX.Element => {
 
 export default function CurrencyConverter(): JSX.Element {
   const [amount, setAmount] = useState('');
-  console.log(amount);
+  const [convetedAmount, setConvetedAmount] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState<Currency>();
+
+  const handleCountrySelect = (selectedCountry: Currency) => {
+    if (!amount) {
+      return Snackbar.show({
+        text: 'Enter a value to convert',
+        backgroundColor: '#EA7773',
+        textColor: '#000000',
+      });
+    }
+    const amount1 = parseFloat(amount);
+    if (!isNaN(amount1)) {
+      setSelectedCountry(selectedCountry);
+      let converted = +amount1 * selectedCountry.value;
+      setConvetedAmount(converted.toString());
+    } else {
+      return Snackbar.show({
+        text: 'Only Numbers Allowed',
+        backgroundColor: '#F4BE2C"',
+        textColor: '#000000',
+      });
+    }
+  };
 
   return (
     <View>
@@ -26,11 +57,31 @@ export default function CurrencyConverter(): JSX.Element {
         keyboardType="number-pad"
         maxLength={14}
       />
+      {selectedCountry && amount && (
+        <View style={styles.result}>
+          <Text style={styles.resultText}>
+            ₹{amount} Equals {selectedCountry.symbol}
+            {convetedAmount} 🤑
+          </Text>
+        </View>
+      )}
       <View style={styles.Container}>
         <FlatList
           numColumns={3}
           data={currencyByRupee}
-          renderItem={({item}) => <CountryCard {...item} />}
+          renderItem={({item}) => (
+            <Pressable
+              style={[
+                styles.countryCardPressable,
+                {
+                  backgroundColor:
+                    selectedCountry?.name === item.name ? '#3498DB' : '#DAE0E2',
+                },
+              ]}
+              onPress={() => handleCountrySelect(item)}>
+              <CountryCard {...item} />
+            </Pressable>
+          )}
           keyExtractor={item => item.name}
         />
       </View>
@@ -46,19 +97,17 @@ const styles = StyleSheet.create({
     color: '#2B2B52',
     margin: 20,
   },
+  resultText: {
+    fontSize: 25,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
   countrycard: {
     width: 100,
     height: 60,
-    backgroundColor: '#DAE0E2',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
-    borderRadius: 15,
   },
-  selected: {
-    backgroundColor: '#3498DB',
-  },
-
   countryflag: {
     fontSize: 20,
   },
@@ -79,5 +128,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 4,
     marginTop: 50,
+  },
+  result: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 15,
+    backgroundColor: '#45CE30',
+    padding: 20,
+    borderRadius: 15,
+  },
+  countryCardPressable: {
+    backgroundColor: '#DAE0E2',
+    margin: 10,
+    borderRadius: 15,
   },
 });
